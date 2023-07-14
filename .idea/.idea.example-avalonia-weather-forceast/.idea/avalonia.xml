@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="WeatherForecastCrossPlatformApplication/WeatherForecastCrossPlatformApplication/App.axaml" value="WeatherForecastCrossPlatformApplication/WeatherForecastCrossPlatformApplication.Browser/WeatherForecastCrossPlatformApplication.Browser.csproj" />
+        <entry key="WeatherForecastCrossPlatformApplication/WeatherForecastCrossPlatformApplication/Views/MainView.axaml" value="WeatherForecastCrossPlatformApplication/WeatherForecastCrossPlatformApplication.Browser/WeatherForecastCrossPlatformApplication.Browser.csproj" />
+        <entry key="WeatherForecastCrossPlatformApplication/WeatherForecastCrossPlatformApplication/Views/MainWindow.axaml" value="WeatherForecastCrossPlatformApplication/WeatherForecastCrossPlatformApplication.Browser/WeatherForecastCrossPlatformApplication.Browser.csproj" />
+        <entry key="WeatherForecastCrossPlatformApplication/WeatherForecastCrossPlatformApplication/Views/SimpleViews/SimpleMain.axaml" value="WeatherForecastCrossPlatformApplication/WeatherForecastCrossPlatformApplication.Browser/WeatherForecastCrossPlatformApplication.Browser.csproj" />
+        <entry key="WeatherForecastCrossPlatformApplication/WeatherForecastCrossPlatformApplication/Views/SimpleViews/SimpleUserControl.axaml" value="WeatherForecastCrossPlatformApplication/WeatherForecastCrossPlatformApplication.Browser/WeatherForecastCrossPlatformApplication.Browser.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

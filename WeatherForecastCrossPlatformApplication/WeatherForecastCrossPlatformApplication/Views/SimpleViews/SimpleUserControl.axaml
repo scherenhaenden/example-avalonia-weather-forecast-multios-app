@@ -1,0 +1,48 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="WeatherForecastCrossPlatformApplication.Views.SimpleViews.SimpleUserControl"
+             xmlns:vm="clr-namespace:WeatherForecastCrossPlatformApplication.ViewModels.SimpleViews"
+             x:DataType="vm:SimpleViewModel">
+    <UserControl.DataContext>
+        <vm:SimpleViewModel/>
+    </UserControl.DataContext>
+    <!-- IN this window I would show some texts -->
+    <!-- Add a grid and put some texts inside to show the weather -->
+    <!-- First add some random location -->
+        
+        
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBox Width="200" Margin="10" Text="{Binding Location, Mode=TwoWay}" Watermark="Enter location" />
+            <Button Content="Get Forecast" Command="{Binding FetchWeatherCommand}" Margin="10"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Text="Location: " FontWeight="Bold" />
+            <TextBlock Text="{Binding Location}" Margin="5"/>
+        </StackPanel>
+
+        <ItemsControl Grid.Row="2" ItemsSource="{Binding WeatherData.Forecast}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                        <TextBlock Text="{Binding Date}" FontWeight="Bold" Margin="5"/>
+                        <TextBlock Text="{Binding Temperature}" Margin="5"/>
+                        <TextBlock Text="{Binding Description}" Margin="5"/>
+                        <!-- Add more properties as needed -->
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+    </Grid>
+</UserControl>
