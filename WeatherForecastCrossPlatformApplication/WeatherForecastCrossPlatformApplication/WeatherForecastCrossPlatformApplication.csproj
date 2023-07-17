@@ -19,4 +19,14 @@
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)"/>
     </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Weather.Business\Weather.Business.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Weather.Data.Net">
+        <HintPath>..\..\WeatherCli\bin\Debug\net7.0\Weather.Data.Net.dll</HintPath>
+      </Reference>
+    </ItemGroup>
 </Project>

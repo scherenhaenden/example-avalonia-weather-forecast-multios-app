@@ -5,6 +5,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="WeatherForecastCrossPlatformApplication.Views.SimpleViews.SimpleUserControl"
              xmlns:vm="clr-namespace:WeatherForecastCrossPlatformApplication.ViewModels.SimpleViews"
+             xmlns:simpleViews="clr-namespace:WeatherForecastCrossPlatformApplication.Views.SimpleViews"
              x:DataType="vm:SimpleViewModel">
     <UserControl.DataContext>
         <vm:SimpleViewModel/>
@@ -18,6 +19,9 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -26,12 +30,26 @@
             <Button Content="Get Forecast" Command="{Binding FetchWeatherCommand}" Margin="10"/>
         </StackPanel>
         
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="1" DataContext="{Binding LocationViewModelData}">
+            <simpleViews:LocationView Grid.Row="2" LocationModel="{Binding LocationModel}" />
+        </StackPanel>
+        
+        
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Text="Location: " FontWeight="Bold" />
-            <TextBlock Text="{Binding Location}" Margin="5"/>
+            <TextBlock Text="{Binding Location}" Margin="0"/>
+        </StackPanel>   
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Text="Temperatur in Celcius: " FontWeight="Bold" />
+            <TextBlock Text="{Binding WeatherDataText.Current.TempC}" Margin="0"
+                       TextWrapping="Wrap"/>
+            <TextBlock Text="Feuchtigkeit: " FontWeight="Bold" />
+            <TextBlock Text="{Binding WeatherDataText.Current.Humidity}" Margin="0"
+                       TextWrapping="Wrap"/>
         </StackPanel>
 
-        <ItemsControl Grid.Row="2" ItemsSource="{Binding WeatherData.Forecast}">
+        <ItemsControl Grid.Row="5" ItemsSource="{Binding WeatherData.Forecast}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">

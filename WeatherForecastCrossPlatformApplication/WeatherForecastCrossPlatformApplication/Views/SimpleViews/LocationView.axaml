@@ -1,0 +1,48 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="WeatherForecastCrossPlatformApplication.Views.SimpleViews.LocationView"
+             xmlns:vm="clr-namespace:WeatherForecastCrossPlatformApplication.ViewModels.SimpleViews"
+             xmlns:simpleViews="clr-namespace:WeatherForecastCrossPlatformApplication.Views.SimpleViews"
+             x:DataType="vm:LocationViewModel">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+    
+        <StackPanel Grid.Row="0" Orientation="Vertical">
+            <TextBlock>
+                <Run Text="Country: "/>
+                <Run Text="{Binding LocationModel.Country}"/>
+            </TextBlock>
+            <TextBlock>
+                <Run Text="Name: "/>
+                <Run Text="{Binding LocationModel.Name}"/>
+            </TextBlock>
+            <TextBlock>
+                <Run Text="Local Time: "/>
+                <Run Text="{Binding LocationModel.Localtime}"/>
+            </TextBlock>
+            <TextBlock>
+                <Run Text="Region: "/>
+                <Run Text="{Binding LocationModel.Region}"/>
+            </TextBlock>
+            <TextBlock>
+                <Run Text="Timezone ID: "/>
+                <Run Text="{Binding LocationModel.TzId}"/>
+            </TextBlock>
+            <TextBlock>
+                <Run Text="Latitude: "/>
+                <Run Text="{Binding LocationModel.Lat}"/>
+            </TextBlock>
+            <TextBlock>
+                <Run Text="Longitude: "/>
+                <Run Text="{Binding LocationModel.Lon}"/>
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+
+</UserControl>

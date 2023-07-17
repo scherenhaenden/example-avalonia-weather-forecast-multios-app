@@ -1,92 +1,56 @@
-using System.Collections.Generic;
 using System.Reactive;
 using ReactiveUI;
+using Weather.Business.Services.WeatherInformation;
+using Weather.Data.Net.Providers.WeatherApi;
 
 namespace WeatherForecastCrossPlatformApplication.ViewModels.SimpleViews;
 
-public class WeatherData
-{
-    public string Location { get; set; }
-    public List<WeatherForecast> Forecast { get; set; } = new();
-}
-
-public class WeatherForecast
-{
-    public string Date { get; set; }
-    public string Temperature { get; set; }
-    public string Description { get; set; }
-    // Add more properties as needed
-}
-
-
 public class SimpleViewModel: ReactiveObject
 {
-    private string location;
-    private WeatherData weatherData;
+    private string _location;
+    private WeatherData _weatherData;
+    private TemperaturesResponseModel _weatherDataText;
+    private LocationViewModel _locationViewModel;
 
     public string Location
     {
-        get => location;
-        set => this.RaiseAndSetIfChanged(ref location, value);
+        get => _location;
+        set => this.RaiseAndSetIfChanged(ref _location, value);
     }
     
     public WeatherData WeatherData
     {
-        get => weatherData;
-        set => this.RaiseAndSetIfChanged(ref weatherData, value);
+        get => _weatherData;
+        set => this.RaiseAndSetIfChanged(ref _weatherData, value);
+    }
+    
+    public TemperaturesResponseModel WeatherDataText
+    {
+        get => _weatherDataText;
+        set => this.RaiseAndSetIfChanged(ref _weatherDataText, value);
+    }
+    
+    public LocationViewModel LocationViewModelData
+    {
+        get => _locationViewModel;
+        set => this.RaiseAndSetIfChanged(ref _locationViewModel, value);
     }
     
     public SimpleViewModel()
     {
-        /*// Initialize services and commands
-        var weatherService = new WeatherService(); // Example weather service implementation
+        
+        LocationViewModelData = new LocationViewModel();
+        
+        /// Initialize services and commands
+        IWeatherService weatherService = new WeatherService(); // Example weather service implementation
 
         // Example command to fetch weather data
         FetchWeatherCommand = ReactiveCommand.CreateFromTask(async () =>
         {
-            WeatherData = await weatherService.GetWeatherDataAsync(Location);
-        });*/
+            WeatherDataText = await weatherService.GetCurrentWeatherData(Location);
+            LocationViewModelData.LocationModel = WeatherDataText.LocationModel;
+        });
     }
     
     public ReactiveCommand<Unit, Unit> FetchWeatherCommand { get; }
 }
-/*
-using Avalonia.Controls;
-using ReactiveUI;
-using WeatherApp.Models;
-using WeatherApp.Services;
-
-namespace WeatherApp.ViewModels
-{
-    public class WeatherForecastViewModel : ReactiveObject
-    {
-        private string location;
-        private WeatherData weatherData;
-
-        public string Location
-        {
-            get => location;
-            set => this.RaiseAndSetIfChanged(ref location, value);
-        }
-
-        public WeatherData WeatherData
-        {
-            get => weatherData;
-            set => this.RaiseAndSetIfChanged(ref weatherData, value);
-        }
-
-        public WeatherForecastViewModel()
-        {
-            // Initialize services and commands
-            var weatherService = new WeatherService(); // Example weather service implementation
-
-            // Example command to fetch weather data
-            FetchWeatherCommand = ReactiveCommand.CreateFromTask(async () =>
-            {
-                WeatherData = await weatherService.GetWeatherDataAsync(Location);
-            });
-        }
-
-        public ReactiveCommand<Unit, Unit> FetchWeatherCommand { get; }
-    }
-}*/

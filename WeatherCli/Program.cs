@@ -3,7 +3,7 @@
 
 using Weather.Data.Proof;
 
-ProofOfConcept Proof = new ProofOfConcept();
+ProofOfConceptV2 Proof = new ProofOfConceptV2();
 var result = Proof.GetTemp();
 result.Wait();
 

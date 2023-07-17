@@ -6,10 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+
     <ItemGroup>
-      <ProjectReference Include="..\Weather.Data.Net\Weather.Data.Net.csproj" />
+      <ProjectReference Include="..\Weather.Data\Weather.Data.csproj" />
     </ItemGroup>
-
-
 
 </Project>
